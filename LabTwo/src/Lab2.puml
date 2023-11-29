@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+allowmixing
+class Pokémon.Cyndaquil
+class Pokémon.Drapion
+class Pokémon.Hippowdon
+class Pokémon.Oddish
+class Pokémon.Servine
+class Pokémon.Skorupi
+class Moves.Physical.Frustration
+class Moves.Physical.Rage
+class Moves.Physical.RockTomb
+class Moves.Physical.VineWhip
+class Moves.Special.Confusion
+class Moves.Special.HydroPump
+class Moves.Special.PetalDance
+class Moves.Special.ThunderShock
+class Moves.Status.FocusEnergy
+class Moves.Status.Substitute
+class Moves.Status.Taunt
+Pokémon.Cyndaquil <... Moves.Special.HydroPump
+Pokémon.Cyndaquil <... Moves.Status.Taunt
+Pokémon.Cyndaquil <... Moves.Special.ThunderShock
+Pokémon.Drapion <... Moves.Physical.Rage
+Pokémon.Drapion <... Moves.Status.FocusEnergy
+Pokémon.Drapion <... Moves.Status.Substitute
+Pokémon.Drapion <... Moves.Special.Confusion
+Pokémon.Skorupi <... Moves.Physical.Rage
+Pokémon.Skorupi <... Moves.Status.FocusEnergy
+Pokémon.Skorupi <... Moves.Status.Substitute
+Pokémon.Oddish <... Moves.Special.HydroPump
+Pokémon.Oddish <... Moves.Special.ThunderShock
+Pokémon.Oddish <... Moves.Status.Taunt
+Pokémon.Oddish <... Moves.Physical.VineWhip
+Pokémon.Servine <... Moves.Special.ThunderShock
+Pokémon.Servine <... Moves.Physical.Frustration
+Pokémon.Servine <... Moves.Special.PetalDance
+Pokémon.Servine <... Moves.Physical.RockTomb
+Pokémon.Hippowdon <... Moves.Status.FocusEnergy
+Pokémon.Hippowdon <... Moves.Status.Substitute
+
+
+Pokémon.Drapion <|-- Pokémon.Skorupi
+
+
+
+
+@enduml

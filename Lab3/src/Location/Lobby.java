@@ -1,15 +1,15 @@
 package Location;
 
 import Humans.Babies;
-import Humans.Human;
 import Humans.Snufkin;
 
 public class Lobby extends Room {
 
-    private Clock clock;
-    private Table table;
-    private Table.Flowers flowers;
+    private final Clock clock = new Clock(TraitsOfClock.STOPPED);
+    private final Table table = new Table();
+    private final Table.Flowers flowers = table.new Flowers(TraitsOfFlowers.FADED);
     private int amountOfPots = 0;
+
     @Override
     public void describe() {
         System.out.println("В прихожей " + table.toString() + ", на котором " + flowers.toString() + ". На стене "
@@ -18,11 +18,14 @@ public class Lobby extends Room {
 
 
     public void doActivities(Snufkin snufkin, Babies babies) {
+        this.describe();
         snufkin.descend(babies);
         snufkin.putPot(this);
+        babies.moveToHuman(snufkin);
         snufkin.smoke(babies);
     }
-    public void bringPot(int amount){
+
+    public void bringPot(int amount) {
         amountOfPots += amount;
     }
 
@@ -54,7 +57,7 @@ public class Lobby extends Room {
         }
 
         class Flowers {
-            private TraitsOfFlowers status;
+            private final TraitsOfFlowers status;
 
             Flowers(TraitsOfFlowers status) {
                 this.status = status;
@@ -66,7 +69,7 @@ public class Lobby extends Room {
 
             @Override
             public String toString() {
-                if(Math.random() >= 0.5) {
+                if (Math.random() >= 0.5) {
                     clock.setStatus(TraitsOfClock.WORKING);
                 } else {
                     clock.setStatus(TraitsOfClock.STOPPED);

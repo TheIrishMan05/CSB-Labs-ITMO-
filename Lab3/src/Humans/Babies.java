@@ -6,16 +6,15 @@ import Location.ILocation;
 
 public class Babies extends Human {
 
-    public Babies(String name, ILocation location, Status status) {
-        super(name, location, status);
+    public Babies(String name, ILocation location, Status status, ActiveStatus activeStatus) {
+        super(name, location, status, activeStatus);
     }
 
     @Override
     public void moveToHuman(Human snufkin) {
-        if (snufkin.getLocation().equals(this.getLocation()) && snufkin instanceof Snufkin){
+        if (snufkin.getLocation().equals(this.getLocation()) && snufkin instanceof Snufkin) {
             this.setStatus(Status.ACTIVE);
-            System.out.println(" Тем временем " + this.getName() + " доползли " + Prepositions.TO
-                    + snufkin.getName() + "у.");
+            System.out.println(" Тем временем " + this.getName() + " доползли " + Prepositions.TO + " " + snufkin.getName() + "у.");
             this.setStatus(Status.STATIC);
         }
     }

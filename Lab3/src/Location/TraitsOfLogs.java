@@ -1,7 +1,6 @@
 package Location;
 
-public enum TraitsOfLogs
-{
+public enum TraitsOfLogs {
     NON_BURNING,
     BURNING
 }

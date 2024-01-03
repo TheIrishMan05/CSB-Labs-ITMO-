@@ -1,6 +1,5 @@
 package Humans;
 
-interface LightUpAble
-{
+interface LightUpAble {
     boolean LightUp();
 }

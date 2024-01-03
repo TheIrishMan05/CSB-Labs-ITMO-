@@ -1,11 +1,9 @@
 package Location;
 
 import Common.House;
-import Humans.Human;
 import Humans.Snufkin;
 
-public class Street implements ILocation
-{
+public class Street implements ILocation {
 
     @Override
     public void describe() {
@@ -13,7 +11,8 @@ public class Street implements ILocation
     }
 
 
-    public void doActivities(Snufkin snufkin, House.Door door)  {
+    public void doActivities(Snufkin snufkin, House.Door door) {
+        this.describe();
         snufkin.knock(door);
     }
 

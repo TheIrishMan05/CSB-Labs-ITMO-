@@ -1,7 +1,6 @@
 package Location;
 
-public abstract class Room implements ILocation
-{
+public abstract class Room implements ILocation {
 
 
 }

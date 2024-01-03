@@ -1,7 +1,6 @@
 package Common;
 
-public enum ObjectStatus
-{
+public enum ObjectStatus {
     CLOSED,
     OPENED
 }

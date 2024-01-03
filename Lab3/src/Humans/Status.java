@@ -1,7 +1,6 @@
 package Humans;
 
-public enum Status
-{
+public enum Status {
     ACTIVE,
     STATIC
 }

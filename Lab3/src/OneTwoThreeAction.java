@@ -1,31 +1,39 @@
 import Common.House;
 import Common.ObjectStatus;
-import Humans.*;
+import Humans.ActiveStatus;
+import Humans.Babies;
+import Humans.Snufkin;
+import Humans.Status;
 import Location.*;
 
-import java.util.LinkedList;
 import java.util.Queue;
 
-public class OneTwoThreeAction
-{
-    public static void main(String[] args)
-    {
-        House.Door door = new House.Door(ObjectStatus.CLOSED);
-        Storeroom.Logs logs = new Storeroom.Logs("Дрова", TraitsOfLogs.NON_BURNING);
+public class OneTwoThreeAction {
+    public static void main(String[] args) {
+        boolean visitLobby = false;
         House house = new House();
+        House.Door door = house.new Door(ObjectStatus.CLOSED);
         Street street = new Street();
-        Snufkin snufkin = new Snufkin("Снусмумрик", street, Status.ACTIVE);
-        Babies babies = new Babies("Малыши", street, Status.ACTIVE);
+        Storeroom.Logs logs = new Storeroom.Logs("Дрова", TraitsOfLogs.NON_BURNING);
+        Snufkin snufkin = new Snufkin("Снусмумрик", street, Status.ACTIVE, ActiveStatus.NO_SMOKING);
+        Babies babies = new Babies("Малыши", street, Status.ACTIVE, ActiveStatus.NO_SMOKING);
         Queue<ILocation> scene = house.createHouse();
         street.doActivities(snufkin, door);
-        for(ILocation i: scene){
+        for (ILocation i : scene) {
             snufkin.enterLocation(i);
-            if(i instanceof Lobby){
-                ((Lobby) i).doActivities(snufkin, babies);
-            } else if(i instanceof Kitchen){
-                ((Kitchen) i).doActivities(snufkin, logs);
-            } else {
+            if (i instanceof Lobby) {
+                if (visitLobby == false) {
+                    visitLobby = true;
+                    babies.setLocation(i);
+                    ((Lobby) i).doActivities(snufkin, babies);
+                } else {
+                    snufkin.putPot((Lobby) i);
+                    babies.moveToHuman(snufkin);
+                }
+            } else if (i instanceof Storeroom) {
                 ((Storeroom) i).doActivities(snufkin);
+            } else {
+                ((Kitchen) i).doActivities(snufkin, logs, babies);
             }
         }
     }

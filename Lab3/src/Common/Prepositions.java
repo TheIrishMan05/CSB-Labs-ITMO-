@@ -6,11 +6,13 @@ public enum Prepositions {
     ON("на"),
     FOR("за");
     private final String prep;
-    Prepositions(String prep){
+
+    Prepositions(String prep) {
         this.prep = prep;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return prep;
     }
 }

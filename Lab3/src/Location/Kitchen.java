@@ -1,5 +1,6 @@
 package Location;
 
+import Humans.Human;
 import Humans.Snufkin;
 
 public class Kitchen extends Room
@@ -10,12 +11,23 @@ public class Kitchen extends Room
     public void describe(){
         System.out.println("На кухне " + furnace.toString());
     }
-    public void putLogs(int amount){
-        logsInStove += amount;
+    public void bringLogs(int amount){
+        this.setLogsInStove(this.logsInStove + amount);
     }
-    @Override
-    public void doActivities(Snufkin snufkin) {
+
+    public int getLogsInStove() {
+        return logsInStove;
+    }
+
+    public void setLogsInStove(int logsInStove) {
+        if (this.logsInStove >= 0){
+            this.logsInStove = logsInStove;
+        }
+    }
+
+    public void doActivities(Snufkin snufkin, Storeroom.Logs logs) {
         snufkin.putLogs(this);
+        snufkin.burnLogs(this, logs);
     }
 
     class Furnace

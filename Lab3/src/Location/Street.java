@@ -1,5 +1,7 @@
 package Location;
 
+import Common.House;
+import Humans.Human;
 import Humans.Snufkin;
 
 public class Street implements ILocation
@@ -10,10 +12,9 @@ public class Street implements ILocation
         System.out.println("На улице " + Weather.RAINY);
     }
 
-    @Override
-    public void doActivities(Snufkin snufkin) {
-        snufkin.knock();
-        snufkin.open();
+
+    public void doActivities(Snufkin snufkin, House.Door door)  {
+        snufkin.knock(door);
     }
 
 }

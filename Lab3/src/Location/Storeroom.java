@@ -12,16 +12,20 @@ public class Storeroom extends Room
         System.out.println("В кладовке " + logs.toString() + ".");
     }
 
-    @Override
-    public void doActivities(Snufkin human) {
-        human.grabLogs(this);
-        human.grabPot(this);
 
+    public void doActivities(Snufkin snufkin) {
+        snufkin.grabLogs(this);
+        snufkin.grabPot(this);
+
+    }
+
+    public Logs getLogs() {
+        return logs;
     }
 
     public void takeLogs(int amount)
     {
-        this.logs.quantity -= amount;
+        this.getLogs().quantity -= amount;
     }
 
     public void takePot(int amount)
@@ -29,17 +33,28 @@ public class Storeroom extends Room
         this.countOfPots -= amount;
     }
 
-    public class Logs
+    public static class Logs
     {
         int quantity = 100;
         private String name;
-        Logs(String name)
+        private TraitsOfLogs traits;
+        public Logs(String name, TraitsOfLogs traits)
         {
             this.name = name;
+            this.traits = traits;
         }
         public String getName(){
             return name;
         }
+
+        public TraitsOfLogs getTraits() {
+            return traits;
+        }
+
+        public void setTraits(TraitsOfLogs traits) {
+            this.traits = traits;
+        }
+
         @Override
         public String toString(){
             return "лежали " + this.getName();

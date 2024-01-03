@@ -3,7 +3,6 @@ package Humans;
 
 import Common.Prepositions;
 import Location.ILocation;
-import Location.Room;
 
 public class Babies extends Human {
 
@@ -11,9 +10,14 @@ public class Babies extends Human {
         super(name, location, status);
     }
 
-
-    public void moveToHuman(Snufkin snufkin) {
-
+    @Override
+    public void moveToHuman(Human snufkin) {
+        if (snufkin.getLocation().equals(this.getLocation()) && snufkin instanceof Snufkin){
+            this.setStatus(Status.ACTIVE);
+            System.out.println(" Тем временем " + this.getName() + " доползли " + Prepositions.TO
+                    + snufkin.getName() + "у.");
+            this.setStatus(Status.STATIC);
+        }
     }
 
     @Override

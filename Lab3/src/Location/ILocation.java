@@ -5,5 +5,4 @@ import Humans.Snufkin;
 
 public interface ILocation {
     void describe();
-    void doActivities(Snufkin snufkin);
 }

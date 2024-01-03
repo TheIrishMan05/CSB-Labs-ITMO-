@@ -4,9 +4,10 @@ package Humans;
 import Location.*;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public abstract class Human implements LightUpAble,
-        MoveAble
+        MoveAble, GrabAble, PutAble, DescendAble
 {
     private ILocation location;
     private final String name;
@@ -37,8 +38,36 @@ public abstract class Human implements LightUpAble,
     }
 
     @Override
-    public void moveTo(Human human) {
+    public void putLogs(Kitchen kitchen) {
+        kitchen.bringLogs(1);
+    }
 
+    @Override
+    public void putPot(Lobby lobby) {
+        lobby.bringPot((int) Math.round(Math.random() * 1));
+    }
+
+    @Override
+    public void grabLogs(Storeroom storeroom) {
+        storeroom.takeLogs(1);
+    }
+
+    @Override
+    public void moveToHuman(Human human) {
+        if (human.getLocation().equals(this.getLocation())) {
+            this.setStatus(Status.ACTIVE);
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            this.setStatus(Status.STATIC);
+        }
+    }
+
+    @Override
+    public void grabPot(Storeroom storeroom) {
+        storeroom.takePot((int) Math.round(Math.random() * 1));
     }
 
     @Override
@@ -53,4 +82,13 @@ public abstract class Human implements LightUpAble,
     public void setLocation(ILocation location) {
         this.location = location;
     }
+    @Override
+    public void descend(Human human)
+    {
+        if (human.getLocation() instanceof Lobby){
+            human.setStatus(Status.STATIC);
+        }
+    }
+
+
 }

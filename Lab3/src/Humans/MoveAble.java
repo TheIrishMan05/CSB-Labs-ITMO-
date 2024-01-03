@@ -3,5 +3,5 @@ package Humans;
 
 interface MoveAble
 {
-    void moveToHuman();
+    void moveToHuman(Human human);
 }

@@ -19,6 +19,15 @@ public class Storeroom extends Room {
 
     }
 
+    public int getCountOfPots() {
+        return countOfPots;
+    }
+
+    public void setCountOfPots(int countOfPots) {
+        if (this.countOfPots >= 0){
+            this.countOfPots = countOfPots;
+        }
+    }
 
     public void takeLogs(int amount) {
         this.logs.quantity -= amount;

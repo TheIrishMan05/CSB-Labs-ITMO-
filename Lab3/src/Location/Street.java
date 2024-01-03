@@ -7,7 +7,7 @@ public class Street implements ILocation {
 
     @Override
     public void describe() {
-        System.out.println("На улице " + Weather.RAINY);
+        System.out.println("На улице " + Weather.RAINY + ".");
     }
 
 

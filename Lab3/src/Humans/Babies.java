@@ -14,14 +14,14 @@ public class Babies extends Human {
     public void moveToHuman(Human snufkin) {
         if (snufkin.getLocation().equals(this.getLocation()) && snufkin instanceof Snufkin) {
             this.setStatus(Status.ACTIVE);
-            System.out.println(" Тем временем " + this.getName() + " доползли " + Prepositions.TO + " " + snufkin.getName() + "у.");
+            System.out.println(" Тем временем " + this.toString() + " доползли " + Prepositions.TO + " " + snufkin.getName() + "у.");
             this.setStatus(Status.STATIC);
         }
     }
 
     @Override
     public boolean LightUp() {
-        System.out.println(this.getName() + " попытались зажечь спичку.");
+        System.out.println(this.toString() + " попытались зажечь спичку.");
         return Math.random() >= 0.5;
     }
 

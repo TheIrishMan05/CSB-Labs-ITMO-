@@ -9,7 +9,7 @@ import Location.Storeroom;
 import java.util.Objects;
 
 public abstract class Human implements LightUpAble,
-        MoveAble, GrabAble, PutAble, DescendAble {
+        MoveAble, DescendAble {
     private final String name;
     private ILocation location;
     private Status status;
@@ -54,20 +54,6 @@ public abstract class Human implements LightUpAble,
         return Math.random() >= 0.5;
     }
 
-    @Override
-    public void putLogs(Kitchen kitchen) {
-        kitchen.bringLogs(1);
-    }
-
-    @Override
-    public void putPot(Lobby lobby) {
-        lobby.bringPot((int) Math.round(Math.random() * 1));
-    }
-
-    @Override
-    public void grabLogs(Storeroom storeroom) {
-        storeroom.takeLogs(1);
-    }
 
     @Override
     public void moveToHuman(Human human) {
@@ -78,10 +64,6 @@ public abstract class Human implements LightUpAble,
         }
     }
 
-    @Override
-    public void grabPot(Storeroom storeroom) {
-        storeroom.takePot((int) Math.round(Math.random() * 1));
-    }
 
     @Override
     public String toString() {

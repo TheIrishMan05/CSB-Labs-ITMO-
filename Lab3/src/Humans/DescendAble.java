@@ -1,5 +1,5 @@
 package Humans;
 
-public interface DescendAble {
+interface DescendAble {
     void descend(Human human);
 }

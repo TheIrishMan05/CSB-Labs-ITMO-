@@ -17,6 +17,8 @@ public class Lobby extends Room {
     }
 
 
+
+
     public void doActivities(Snufkin snufkin, Babies babies) {
         this.describe();
         snufkin.descend(babies);

@@ -84,9 +84,7 @@ public abstract class Human implements LightUpAble,
 
     @Override
     public void descend(Human human) {
-        if (human.getLocation() instanceof Lobby) {
-            human.setStatus(Status.SITTING);
-        }
+        human.setStatus(Status.SITTING);
     }
 
     @Override

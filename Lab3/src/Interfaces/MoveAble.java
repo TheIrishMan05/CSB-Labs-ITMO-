@@ -1,7 +1,7 @@
 package Interfaces;
 
 
-import Entities.Human;
+import Humans.Human;
 
 public interface MoveAble {
     void moveToHuman(Human human);

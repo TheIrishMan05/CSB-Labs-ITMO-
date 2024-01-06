@@ -2,8 +2,8 @@ package Locations;
 
 import Enums.TraitsOfClock;
 import Enums.TraitsOfFlowers;
-import Entities.Babies;
-import Entities.Snufkin;
+import Humans.Babies;
+import Humans.Snufkin;
 
 public class Lobby extends Room {
 
@@ -14,11 +14,9 @@ public class Lobby extends Room {
 
     @Override
     public void describe() {
-        System.out.println("В прихожей " + table.toString() + ", на котором " + flowers.toString() + ". На стене "
-                + clock.toString());
+        System.out.println("В прихожей " + table + ", на котором " + flowers + ". На стене "
+                + clock);
     }
-
-
 
 
     public void doActivities(Snufkin snufkin, Babies babies) {
@@ -30,7 +28,17 @@ public class Lobby extends Room {
     }
 
     public void bringPot(int amount) {
-        amountOfPots += amount;
+        this.setAmountOfPots(this.getAmountOfPots() + amount);
+    }
+
+    public int getAmountOfPots() {
+        return amountOfPots;
+    }
+
+    public void setAmountOfPots(int amountOfPots) {
+        if (this.amountOfPots >= 0) {
+            this.amountOfPots = amountOfPots;
+        }
     }
 
     class Clock {

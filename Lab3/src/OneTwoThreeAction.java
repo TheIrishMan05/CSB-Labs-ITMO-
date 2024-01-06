@@ -1,12 +1,12 @@
 import Enums.ActiveStatus;
 import Enums.ObjectStatus;
 import Enums.Status;
-import Enums.TraitsOfLogs;
-import Entities.Babies;
-import Entities.HouseCreator;
-import Entities.Snufkin;
+import Enums.TraitsOfFirewood;
+import Humans.Babies;
+import Humans.Snufkin;
+import Interfaces.ILocation;
 import Locations.*;
-import Interfaces.*;
+
 import java.util.Queue;
 
 public class OneTwoThreeAction {
@@ -16,7 +16,7 @@ public class OneTwoThreeAction {
         HouseCreator builder = new HouseCreator();
         House.Door door = house.new Door(ObjectStatus.CLOSED);
         Street street = new Street();
-        Storeroom.Logs logs = new Storeroom.Logs("Дрова", TraitsOfLogs.NON_BURNING);
+        Storeroom.Firewood firewood = new Storeroom.Firewood(TraitsOfFirewood.NON_BURNING);
         Snufkin snufkin = new Snufkin("Снусмумрик", street, Status.ACTIVE, ActiveStatus.NO_SMOKING);
         Babies babies = new Babies("Малыши", street, Status.ACTIVE, ActiveStatus.NO_SMOKING);
         Queue<ILocation> scene = builder.createHouse(house);
@@ -34,7 +34,7 @@ public class OneTwoThreeAction {
             } else if (i instanceof Storeroom) {
                 ((Storeroom) i).doActivities(snufkin);
             } else {
-                ((Kitchen) i).doActivities(snufkin, logs, babies);
+                ((Kitchen) i).doActivities(snufkin, firewood, babies);
             }
         }
     }

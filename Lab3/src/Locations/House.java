@@ -4,9 +4,9 @@ import Enums.ObjectStatus;
 import Interfaces.CloseAble;
 
 public class House {
-    private Lobby lobby = new Lobby();
-    private Kitchen kitchen = new Kitchen();
-    private Storeroom storeroom = new Storeroom();
+    private final Lobby lobby = new Lobby();
+    private final Kitchen kitchen = new Kitchen();
+    private final Storeroom storeroom = new Storeroom();
 
     public Kitchen getKitchen() {
         return kitchen;

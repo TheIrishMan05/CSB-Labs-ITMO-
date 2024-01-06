@@ -1,6 +1,5 @@
 package Interfaces;
 
-public interface CloseAble
-{
+public interface CloseAble {
     boolean isClosed();
 }

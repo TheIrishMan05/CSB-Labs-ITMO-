@@ -1,6 +1,5 @@
 package Interfaces;
 
-public interface EnterLocationAble
-{
+public interface EnterLocationAble {
     void enterLocation(ILocation location);
 }

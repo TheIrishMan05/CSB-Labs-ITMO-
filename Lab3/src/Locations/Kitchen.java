@@ -1,35 +1,36 @@
 package Locations;
 
 import Enums.FurnaceStatus;
-import Entities.Babies;
-import Entities.Snufkin;
+import Humans.Babies;
+import Humans.Snufkin;
+
 public class Kitchen extends Room {
     private final Furnace furnace = new Furnace(FurnaceStatus.COLD);
-    private int logsInStove = 0;
+    private int firewoodInStove = 0;
 
     @Override
     public void describe() {
-        System.out.println("На кухне " + furnace.toString());
+        System.out.println("На кухне " + furnace);
     }
 
     public void bringLogs(int amount) {
-        this.setLogsInStove(this.getLogsInStove() + amount);
+        this.setLogsInStove(this.firewoodInStove + amount);
     }
 
     public int getLogsInStove() {
-        return logsInStove;
+        return firewoodInStove;
     }
 
     public void setLogsInStove(int logsInStove) {
-        if (this.logsInStove >= 0) {
-            this.logsInStove = logsInStove;
+        if (this.firewoodInStove >= 0) {
+            this.firewoodInStove = logsInStove;
         }
     }
 
-    public void doActivities(Snufkin snufkin, Storeroom.Logs logs, Babies babies) {
+    public void doActivities(Snufkin snufkin, Storeroom.Firewood firewood, Babies babies) {
         this.describe();
-        snufkin.putLogs(this);
-        snufkin.burnLogs(this, logs);
+        snufkin.putFirewood(this);
+        snufkin.burnFirewood(this, firewood);
         snufkin.moveToHuman(babies);
     }
 

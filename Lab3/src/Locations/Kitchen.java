@@ -1,8 +1,8 @@
 package Locations;
 
+import Entities.Babies;
+import Entities.Snufkin;
 import Enums.FurnaceStatus;
-import Humans.Babies;
-import Humans.Snufkin;
 
 public class Kitchen extends Room {
     private final Furnace furnace = new Furnace(FurnaceStatus.COLD);

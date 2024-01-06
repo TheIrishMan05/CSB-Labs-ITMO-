@@ -1,7 +1,7 @@
 package Locations;
 
+import Entities.Snufkin;
 import Enums.Weather;
-import Humans.Snufkin;
 import Interfaces.ILocation;
 
 public class Street implements ILocation {

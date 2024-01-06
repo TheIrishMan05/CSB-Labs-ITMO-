@@ -3,8 +3,8 @@ package Entities;
 
 import Enums.ActiveStatus;
 import Enums.Status;
-import Locations.Lobby;
 import Interfaces.*;
+
 import java.util.Objects;
 
 public abstract class Human implements LightUpAble,
@@ -62,10 +62,10 @@ public abstract class Human implements LightUpAble,
             this.setStatus(Status.STANDING);
         }
     }
+
     @Override
-    public void enterLocation(ILocation location)
-    {
-        if (this.getStatus().equals(Status.ACTIVE)){
+    public void enterLocation(ILocation location) {
+        if (this.getStatus().equals(Status.ACTIVE)) {
             this.setLocation(location);
         }
 

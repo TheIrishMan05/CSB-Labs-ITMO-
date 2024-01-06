@@ -1,9 +1,10 @@
+import Entities.Babies;
+import Entities.HouseCreator;
+import Entities.Snufkin;
 import Enums.ActiveStatus;
 import Enums.ObjectStatus;
 import Enums.Status;
 import Enums.TraitsOfFirewood;
-import Humans.Babies;
-import Humans.Snufkin;
 import Interfaces.ILocation;
 import Locations.*;
 

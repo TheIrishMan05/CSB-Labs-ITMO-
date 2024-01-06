@@ -1,6 +1,6 @@
 package Interfaces;
 
-import Humans.Human;
+import Entities.Human;
 
 public interface DescendAble {
     void descend(Human human);

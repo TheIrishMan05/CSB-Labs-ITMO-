@@ -1,9 +1,9 @@
 package Locations;
 
+import Entities.Babies;
+import Entities.Snufkin;
 import Enums.TraitsOfClock;
 import Enums.TraitsOfFlowers;
-import Humans.Babies;
-import Humans.Snufkin;
 
 public class Lobby extends Room {
 
@@ -50,6 +50,11 @@ public class Lobby extends Room {
 
         @Override
         public String toString() {
+            if (Math.random() >= 0.5) {
+                clock.setStatus(TraitsOfClock.WORKING);
+            } else {
+                clock.setStatus(TraitsOfClock.STOPPED);
+            }
             return " висели " + this.getStatus() + " часы.";
         }
 
@@ -69,7 +74,7 @@ public class Lobby extends Room {
         }
 
         class Flowers {
-            private final TraitsOfFlowers status;
+            private TraitsOfFlowers status;
 
             Flowers(TraitsOfFlowers status) {
                 this.status = status;
@@ -79,12 +84,16 @@ public class Lobby extends Room {
                 return status;
             }
 
+            public void setStatus(TraitsOfFlowers status) {
+                this.status = status;
+            }
+
             @Override
             public String toString() {
                 if (Math.random() >= 0.5) {
-                    clock.setStatus(TraitsOfClock.WORKING);
+                    this.setStatus(TraitsOfFlowers.NOTFADED);
                 } else {
-                    clock.setStatus(TraitsOfClock.STOPPED);
+                    this.setStatus(TraitsOfFlowers.FADED);
                 }
                 return " стояли " + this.getStatus() + " цветы ";
             }

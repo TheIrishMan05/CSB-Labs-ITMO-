@@ -1,7 +1,7 @@
 package Locations;
 
+import Entities.Snufkin;
 import Enums.TraitsOfFirewood;
-import Humans.Snufkin;
 
 public class Storeroom extends Room {
     private final Firewood firewood = new Firewood(TraitsOfFirewood.NON_BURNING);

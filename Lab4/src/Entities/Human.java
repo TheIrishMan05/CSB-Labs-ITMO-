@@ -2,7 +2,9 @@ package Entities;
 
 
 import Enums.ActiveStatus;
+import Enums.ObjectStatus;
 import Enums.Status;
+import Exceptions.NoMatchesException;
 import Interfaces.*;
 
 import java.util.Objects;
@@ -20,7 +22,6 @@ public abstract class Human implements LightUpAble,
         this.status = status;
         this.activeStatus = activeStatus;
     }
-
 
     public void setActiveStatus(ActiveStatus activeStatus) {
         this.activeStatus = activeStatus;
@@ -47,7 +48,56 @@ public abstract class Human implements LightUpAble,
     }
 
     public boolean LightUp() {
-        return Math.random() >= 0.5 && !this.getStatus().equals(Status.DEAD);
+        class Match{
+            private ObjectStatus objectStatus;
+            private int amountOfMatches = 10;
+            Match(ObjectStatus objectStatus){
+                this.objectStatus = objectStatus;
+            }
+            public void setObjectStatus(ObjectStatus objectStatus) {
+                this.objectStatus = objectStatus;
+            }
+
+            public ObjectStatus getObjectStatus() {
+                return objectStatus;
+            }
+            public int getAmountOfMatches() {
+                return amountOfMatches;
+            }
+
+            public void setAmountOfMatches(int amountOfMatches) throws NoMatchesException {
+                if (this.amountOfMatches <= 0) {
+                    throw new NoMatchesException("Спички закончились");
+                } else {
+                    this.amountOfMatches = amountOfMatches;
+                }
+            }
+            public boolean isBurning(){
+                if (Math.random() >= 0.5 && this.getObjectStatus().equals(ObjectStatus.LIVELONG)) {
+                    try {
+                        this.setAmountOfMatches(this.getAmountOfMatches() - 1);
+                        System.out.println("Спичка загорелась.");
+                        return true;
+                    } catch (NoMatchesException nme) {
+                        System.out.println("\u001B[33m" + "Спички закончились" + "\u001B[0m");
+                        return false;
+                    }
+                } else {
+                    try {
+                        this.setObjectStatus(ObjectStatus.BROKEN);
+                        this.setAmountOfMatches(this.getAmountOfMatches() - 1);
+                        this.setObjectStatus(ObjectStatus.LIVELONG);
+                        System.out.println("Спичка сломалась.");
+                        return false;
+                    } catch (NoMatchesException nme) {
+                        System.out.println("Спички закончились");
+                        return false;
+                    }
+                }
+            }
+        }
+        Match match = new Match(ObjectStatus.LIVELONG);
+        return match.isBurning();
     }
 
 

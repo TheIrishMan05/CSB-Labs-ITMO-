@@ -4,14 +4,12 @@ package Entities;
 import Enums.ActiveStatus;
 import Enums.Prepositions;
 import Enums.Status;
-import Exceptions.NoMatchesException;
 import Interfaces.ILocation;
 import Locations.Storeroom;
 
 public class Babies extends Human {
     private int nourishment = 40;
     private int happiness = 60;
-    private int amountOfMatches = 10;
 
     public Babies(String name, ILocation location, Status status, ActiveStatus activeStatus) {
         super(name, location, status, activeStatus);
@@ -27,17 +25,8 @@ public class Babies extends Human {
         }
     }
 
-    public int getAmountOfMatches() {
-        return amountOfMatches;
-    }
 
-    public void setAmountOfMatches(int amountOfMatches) throws NoMatchesException {
-        if (this.amountOfMatches <= 0) {
-            throw new NoMatchesException("Спички закончились");
-        } else {
-            this.amountOfMatches = amountOfMatches;
-        }
-    }
+
 
     public int getHappiness() {
         return happiness;
@@ -55,22 +44,6 @@ public class Babies extends Human {
             this.setStatus(Status.ACTIVE);
             System.out.println("Тем временем " + this + " доползли " + Prepositions.TO + " " + snufkin.getName() + "у.");
             this.setStatus(Status.STANDING);
-        }
-    }
-
-    @Override
-    public boolean LightUp() {
-        System.out.println(this + " попытались зажечь спичку.");
-        if (Math.random() >= 0.5 && !this.getStatus().equals(Status.DEAD)) {
-            try {
-                this.setAmountOfMatches(this.getAmountOfMatches() - 1);
-                return true;
-            } catch (NoMatchesException nme) {
-                System.out.println("\u001B[33m" + "Спички закончились." + "\u001B[0m");
-                return false;
-            }
-        } else {
-            return false;
         }
     }
 

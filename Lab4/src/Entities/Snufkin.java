@@ -3,7 +3,6 @@ package Entities;
 import Enums.*;
 import Exceptions.CarbonMonoxidePoisoningException;
 import Exceptions.NoFirewoodException;
-import Exceptions.NoMatchesException;
 import Exceptions.RopeOverloadException;
 import Interfaces.ILocation;
 import Locations.*;
@@ -13,7 +12,6 @@ import java.util.TimerTask;
 
 public class Snufkin extends Human {
     private int happiness = 50;
-    private int amountOfMatches = 10;
     private int amountOfClothes = 5;
 
     public Snufkin(String name, ILocation location, Status status, ActiveStatus activeStatus) {
@@ -40,40 +38,6 @@ public class Snufkin extends Human {
         }
     }
 
-    @Override
-    public boolean LightUp() {
-        if (Math.random() >= 0.5) {
-            try {
-                this.setAmountOfMatches(this.getAmountOfMatches() - 1);
-                System.out.println("Спичка загорелась.");
-                return true;
-            } catch (NoMatchesException nme) {
-                System.out.println("\u001B[33m" + "Спички закончились" + "\u001B[0m");
-                return false;
-            }
-        } else {
-            try {
-                this.setAmountOfMatches(this.getAmountOfMatches() - 1);
-                System.out.println("Спичка сломалась.");
-                return false;
-            } catch (NoMatchesException nme) {
-                System.out.println("Спички закончились");
-                return false;
-            }
-        }
-    }
-
-    public int getAmountOfMatches() {
-        return amountOfMatches;
-    }
-
-    public void setAmountOfMatches(int amountOfMatches) throws NoMatchesException {
-        if (this.amountOfMatches <= 0) {
-            throw new NoMatchesException("Спички закончились");
-        } else {
-            this.amountOfMatches = amountOfMatches;
-        }
-    }
 
     public void hang(Rope rope) {
         int hungClothesCounter = 0;

@@ -26,8 +26,6 @@ public class Babies extends Human {
     }
 
 
-
-
     public int getHappiness() {
         return happiness;
     }

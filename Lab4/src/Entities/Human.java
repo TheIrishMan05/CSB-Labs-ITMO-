@@ -48,19 +48,22 @@ public abstract class Human implements LightUpAble,
     }
 
     public boolean LightUp() {
-        class Match{
+        class Match {
             private ObjectStatus objectStatus;
             private int amountOfMatches = 10;
-            Match(ObjectStatus objectStatus){
-                this.objectStatus = objectStatus;
-            }
-            public void setObjectStatus(ObjectStatus objectStatus) {
+
+            Match(ObjectStatus objectStatus) {
                 this.objectStatus = objectStatus;
             }
 
             public ObjectStatus getObjectStatus() {
                 return objectStatus;
             }
+
+            public void setObjectStatus(ObjectStatus objectStatus) {
+                this.objectStatus = objectStatus;
+            }
+
             public int getAmountOfMatches() {
                 return amountOfMatches;
             }
@@ -72,7 +75,8 @@ public abstract class Human implements LightUpAble,
                     this.amountOfMatches = amountOfMatches;
                 }
             }
-            public boolean isBurning(){
+
+            public boolean isBurning() {
                 if (Math.random() >= 0.5 && this.getObjectStatus().equals(ObjectStatus.LIVELONG)) {
                     try {
                         this.setAmountOfMatches(this.getAmountOfMatches() - 1);

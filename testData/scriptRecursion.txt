@@ -1,2 +1,0 @@
-help
-execute_script C:\study\labs\Programming\Lab5\testData\scriptAdd.txt

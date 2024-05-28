@@ -14,3 +14,5 @@
 [lab 3](https://github.com/TheIrishMan05/ITMO-Labs-Programming/tree/main/Lab3) ЛР3 - 75/100
 
 [lab 4](https://github.com/TheIrishMan05/ITMO-Labs-Programming/tree/main/Lab4) ЛР4 - 90/100
+
+[lab 5](https://github.com/TheIrishMan05/ITMO-Labs-Programming/tree/main/Lab5) ЛР5 - 98/100
